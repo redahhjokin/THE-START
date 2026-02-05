@@ -93,16 +93,56 @@ function hotelCost() {
 
 function planeRideCost() {
   do {
-    days = prompt(" destination : ");
-  } while (isNaN(days) !== true);
+    rides = prompt(" destination : ");
+  } while (isNaN(rides) !== true);
   const price = {
     London: 183,
     Paris: 220,
+    AllOtherDestination: 300,
   };
+  if (rides == "london") {
+    return price.London;
+  } else if (rides == "paris") {
+    return price.Paris;
+  } else return price.AllOtherDestination;
+}
+function rentalCarCost() {
+  let days = 0;
+
+  do {
+    days = Number(
+      prompt(" the number of days you would like to rent the car : "),
+    );
+  } while (isNaN(days) || days <= 0);
+
+  if (days <= 10) {
+    cost = days * 40;
+  } else {
+    cost = days * 40 - (40 * 5) / 100;
+  }
+
+  return cost;
 }
 
-planeRideCost();
-// BA9I MASALACH
+function totalVacationCost() {
+  let CarCost = rentalCarCost();
+  let HotelCost = hotelCost();
+  let RideCost = planeRideCost();
+  let total = CarCost + HotelCost + RideCost;
+
+  alert(
+    " The car cost: " +
+      CarCost +
+      "dh , the hotel cost: " +
+      HotelCost +
+      "dh , the plane tickets cost: " +
+      RideCost +
+      "dh and the total is : " +
+      total +
+      "dh .",
+  );
+}
+totalVacationCost();
 
 // ===== Exercise 5 =====
 
