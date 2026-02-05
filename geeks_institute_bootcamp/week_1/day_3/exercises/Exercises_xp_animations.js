@@ -41,3 +41,21 @@ btn.addEventListener("click", Stop);
 // ===== Exercise 2 =====
 
 // ----------- Move the box -------------
+
+let container = document.getElementById("container");
+let animate = document.getElementById("animate");
+
+let count = 0
+function myMove() {
+    
+  let move = setInterval(frame, 1);
+
+  function frame() {
+    if (count >= 350) {
+      clearInterval(mov);
+    } else {
+      count++;
+      animate.style.left = count + "px";
+    }
+  }
+}
