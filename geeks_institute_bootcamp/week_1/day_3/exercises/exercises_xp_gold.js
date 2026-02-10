@@ -15,58 +15,19 @@ classic.selected = true;
 
 // ----------- Delete colors -------------
 
-// ===== Exercise 3 =====
+const select = document.getElementById("colorSelect");
+const btn = document.querySelector('input[type="button"]');
 
-// ----------- Create a shopping list -------------
+btn.addEventListener("click", removeColor);
 
-let shoppingList = [];
+function removeColor() {
+  const selectedIndex = select.selectedIndex;
 
-const root = document.getElementById("root");
-const form = document.createElement("form");
-const input = document.createElement("input");
-input.type = "text";
-input.placeholder = "Add item";
-
-const addBtn = document.createElement("button");
-addBtn.textContent = "AddItem";
-
-form.appendChild(input);
-form.appendChild(addBtn);
-root.appendChild(form);
-
-const ul = document.createElement("ul");
-root.appendChild(ul);
-
-const clearBtn = document.createElement("button");
-clearBtn.textContent = "ClearAll";
-root.appendChild(clearBtn);
-
-// add item
-function addItem(e) {
-  e.preventDefault();
-
-  if (input.value.trim() === "") return;
-
-  shoppingList.push(input.value);
-  input.value = "";
-  renderList();
-}
-
-function clearAll() {
-  shoppingList = [];
-  renderList();
-}
-
-// render list
-function renderList() {
-  ul.innerHTML = "";
-
-  for (let i = 0; i < shoppingList.length; i++) {
-    const li = document.createElement("li");
-    li.textContent = shoppingList[i];
-    ul.appendChild(li);
+  if (selectedIndex !== -1) {
+    select.remove(selectedIndex);
   }
 }
 
-form.addEventListener("submit", addItem);
-clearBtn.addEventListener("click", clearAll);
+// ===== Exercise 3 =====
+
+// ----------- Create a shopping list -------------
